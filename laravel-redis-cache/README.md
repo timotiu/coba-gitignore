@@ -72,9 +72,12 @@ Proyek ini adalah implementasi lengkap Laravel dengan Redis caching yang siap un
 ## 🚀 Quick Start dengan Docker
 
 ### Prerequisites
-- Docker 20.10+
-- Docker Compose 2.0+
+- Docker 20.10+ atau Docker Desktop
+- Docker Compose 2.0+ (atau `docker compose` command)
 - 4GB+ RAM available
+
+### ⚠️ Docker Build Fix
+Jika mengalami error `libonig-dev (no such package)`, lihat **[DOCKER_FIX_GUIDE.md](DOCKER_FIX_GUIDE.md)** untuk solusi lengkap.
 
 ### 1. Clone & Setup
 ```bash
@@ -249,6 +252,11 @@ make benchmark
 ### 🧪 Testing & Commands  
 - **[TESTING_COMMANDS.md](TESTING_COMMANDS.md)** - Complete testing reference
 - **Makefile** - Docker management automation
+
+### 🔧 Setup & Troubleshooting
+- **[DOCKER_FIX_GUIDE.md](DOCKER_FIX_GUIDE.md)** - Docker build fixes & solutions
+- **[ALTERNATIVE_SETUP.md](ALTERNATIVE_SETUP.md)** - Local setup without Docker
+- **build-and-test.sh** - Automated build and test script
 
 ### 🏗️ Architecture Documents
 - **Repository Pattern** - `app/Repositories/ProductRepository.php`

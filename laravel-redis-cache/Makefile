@@ -12,13 +12,34 @@ help: ## Show this help message
 
 # Development Commands
 build: ## Build Docker containers
-	docker-compose build --no-cache
+	@if command -v docker-compose > /dev/null; then \
+		docker-compose build --no-cache; \
+	elif command -v docker > /dev/null; then \
+		docker compose build --no-cache; \
+	else \
+		echo "❌ Docker not found. Please install Docker first."; \
+		exit 1; \
+	fi
 
 up: ## Start all services
-	docker-compose up -d
+	@if command -v docker-compose > /dev/null; then \
+		docker-compose up -d; \
+	elif command -v docker > /dev/null; then \
+		docker compose up -d; \
+	else \
+		echo "❌ Docker not found. Please install Docker first."; \
+		exit 1; \
+	fi
 
 down: ## Stop all services
-	docker-compose down
+	@if command -v docker-compose > /dev/null; then \
+		docker-compose down; \
+	elif command -v docker > /dev/null; then \
+		docker compose down; \
+	else \
+		echo "❌ Docker not found. Please install Docker first."; \
+		exit 1; \
+	fi
 
 restart: ## Restart all services
 	docker-compose restart
