@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HealthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,6 +11,14 @@ Route::get('/', function () {
 
 Route::get('/redis-demo', function () {
     return view('redis-demo');
+});
+
+// Health Check Routes
+Route::prefix('health')->group(function () {
+    Route::get('/', [HealthController::class, 'index']);
+    Route::get('/detailed', [HealthController::class, 'detailed']);
+    Route::get('/cache', [HealthController::class, 'cache']);
+    Route::get('/metrics', [HealthController::class, 'metrics']);
 });
 
 // API Routes untuk Product dengan Redis Caching
