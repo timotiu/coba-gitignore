@@ -1,0 +1,14 @@
+# Laravel Scheduler
+* * * * * cd /var/www && php artisan schedule:run >> /var/log/cron.log 2>&1
+
+# Cache cleanup every hour
+0 * * * * cd /var/www && php artisan cache:cleanup >> /var/log/cron.log 2>&1
+
+# Clear expired cache every 6 hours
+0 */6 * * * cd /var/www && php artisan cache:prune-stale-tags >> /var/log/cron.log 2>&1
+
+# Database optimization weekly
+0 2 * * 0 cd /var/www && php artisan db:optimize >> /var/log/cron.log 2>&1
+
+# Log rotation monthly
+0 0 1 * * cd /var/www && php artisan log:clear >> /var/log/cron.log 2>&1
